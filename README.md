@@ -1,6 +1,6 @@
 ![model-demo](https://github.com/user-attachments/assets/2bb56633-b869-4aca-82db-3d82f60b0c7a)
 
-# Food-101 MobileNet Fine-Tuning
+# MobileNet Fine-Tuning on Food-101
 
 This project involves fine-tuning a MobileNet model on the Food-101 dataset to optimise performance while managing limited computational resources. Given these constraints, experiments and hyperparameter optimisation were conducted on a 10% subset of the training data. Two distinct fine-tuning strategies were explored: single-stage fine-tuning, where the entire model was trained simultaneously, and two-stage fine-tuning, which involved an initial phase of training only the final Fully-Connected layer followed by a phase of training the entire network. The two-stage approach aimed to leverage rapid adaptation of the classifier before fine-tuning the pre-trained layers with more nuanced adjustments. Our results demonstrated that, of the experimental models, single-stage fine-tuning achieved the highest accuracy at 67.3%, while two-stage fine-tuning achieved 66.1%. Ultimately, we applied single-stage fine-tuning (without freezing) for the final model which we trained on the entire dataset, resulting in a validation accuracy of 83.5% and a test accuracy of 82.9%.
 
