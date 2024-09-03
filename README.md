@@ -2,7 +2,7 @@
 
 # Food-101 MobileNet Fine-Tuning
 
-This project focuses on fine-tuning a MobileNet model on the Food-101 dataset, aiming to optimise model performance through experimentation while addressing the challenges of limited computational resources. Given these constraints, we conducted our experiments and hyperparameter optimisation on a 10% subset of the training data. Two distinct fine-tuning strategies were explored: single-stage fine-tuning, where the entire model was trained simultaneously, and two-stage fine-tuning, which involved an initial phase of training only the final Fully-Connected layer followed by a phase of training the entire network. The two-stage approach aimed to leverage rapid adaptation of the classifier before fine-tuning the pre-trained layers with more nuanced adjustments. Our results demonstrated that, of the experimental models, single-stage fine-tuning achieved the highest accuracy at 67.3%, while two-stage fine-tuning achieved 66.1%. Ultimately, we applied single-stage fine-tuning (without freezing) for the final model which we trained on the entire dataset, resulting in a validation accuracy of 83.5% and a test accuracy of 82.9%.
+This project involves fine-tuning a MobileNet model on the Food-101 dataset to optimise performance while managing limited computational resources. Given these constraints, experiments and hyperparameter optimisation were conducted on a 10% subset of the training data. Two distinct fine-tuning strategies were explored: single-stage fine-tuning, where the entire model was trained simultaneously, and two-stage fine-tuning, which involved an initial phase of training only the final Fully-Connected layer followed by a phase of training the entire network. The two-stage approach aimed to leverage rapid adaptation of the classifier before fine-tuning the pre-trained layers with more nuanced adjustments. Our results demonstrated that, of the experimental models, single-stage fine-tuning achieved the highest accuracy at 67.3%, while two-stage fine-tuning achieved 66.1%. Ultimately, we applied single-stage fine-tuning (without freezing) for the final model which we trained on the entire dataset, resulting in a validation accuracy of 83.5% and a test accuracy of 82.9%.
 
 This repository includes a [Notebook](https://github.com/gordon801/mobile-net-food-101/blob/main/mobile-net-food-101.ipynb) that summarises our methodologies and results, providing insights into the fine-tuning process. It also includes a [Flask web application](https://github.com/gordon801/mobile-net-food-101/blob/main/app.py) that deploys the trained final model, which predicts one of the 101 food classes in the Food-101 dataset. This allows users to upload their own images and receive predictions on its food class.
 
@@ -48,11 +48,11 @@ This model was trained and tested on the FOOD-101 dataset, which consists of 101
 - `app.py`: A Flask application for predicting food class labels from input images using the fine-tuned MobileNet model.
 
 ### Running `main.py` and `app.py`
-To train the model on a 10% subset of the dataset (e.g. for hyperparameter optimisation or experimentation), you can run:
+To train the model on a 10% subset of the dataset (e.g. for hyperparameter optimisation or experimentation), run:
 ```
 python main.py --mode train --dataset subset_10 --num_epochs 50 --learning_rate 1e-4 --model_name my_model
 ```
-To train the model on the full dataset, you can run:
+To train the model on the full dataset, run:
 ```
 python main.py --mode train --dataset full --num_epochs 50 --learning_rate 1e-4 --model_name my_model
 ```
@@ -60,7 +60,7 @@ To evaluate your trained model on the test dataset, run:
 ```
 python main.py --mode test --dataset full --checkpoint_path checkpoint/my_model/best_model.pth.tar --model_name my_model
 ```
-To deploy your trained model to a web application, you can run:
+To deploy your trained model to a web application, run:
 ```
 python app.py
 ```
