@@ -2,7 +2,7 @@ import io
 import torch
 from flask import Flask, jsonify, request, render_template
 from PIL import Image
-from src.main import DEVICE, DTYPE, FOOD101_CLASSES
+from main import DEVICE, DTYPE, FOOD101_CLASSES
 from src.mobilenet import MyMobileNet
 from src.data_utils import get_test_transform, load_classes
 
