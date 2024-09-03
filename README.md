@@ -74,12 +74,12 @@ git clone https://github.com/gordon801/mobile-net-food-101.git
 ```
 pip install -r requirements.txt
 ```
-3. Train and evaluate your model by following process in the `mobile-net-food-101.ipynb` notebook or by running:
+3. Train and evaluate your model by following the process in the `mobile-net-food-101.ipynb` notebook or by running:
 ```
 python main.py --mode train --dataset full --num_epochs 50 --learning_rate 1e-4 --model_name my_model
 python main.py --mode test --dataset full --checkpoint_path checkpoint/my_model/best_model.pth.tar --model_name my_model
 ```
-4. Deploy your trained model to a web application and make predictions by uploading new images by running:
+4. Deploy your trained model to a web application and make predictions by uploading new images:
 ```
 python app.py
 ```
