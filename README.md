@@ -20,11 +20,75 @@ This project uses MobileNetV3 Large, which we fine-tune on the Food-101 dataset 
 ## Final Model Outputs
 ![Prediction examples](https://github.com/user-attachments/assets/90b2eb85-e733-4441-ac50-0c1d7e4ed77b)
 
-## Data
-This model was trained and tested on the FOOD-101 dataset. More information about this dataset can be found on [this website](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/). The dataset can be downloaded from [here](http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz).
+## Project Structure
+```
+mobile-net-food-101/
+├── data/
+│   └── food-101/
+├── src/
+│   ├── data_utils.py
+│   ├── mobilenet.py
+│   ├── train.py
+│   └── vis_utils.py
+├── templates/
+│   └── index.html
+├── app.py
+├── main.py
+└── ...
+```
+### Data
+This model was trained and tested on the FOOD-101 dataset. More information about this dataset can be found on [this website](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/). The dataset can be downloaded from [here](http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz) and should be saved in the `data` folder in the root-level directory. 
 
-## TODO
-- Steps to reproduce 
-- Other details
-- References/Acknowledgements
-- Full report
+### Scripts
+- `src/data_utils.py`: Contains functions to handle data loading, transformations, and preparation of the Food-101 dataset for training, validation, and testing.
+- `src/mobilenet.py`: Implements a custom MobileNet v3 model for classification tasks, allowing the use of pre-trained weights, loading from checkpoints, and freezing layers during training.
+- `src/train.py`: Contains functions for training the MobileNet model, evaluating its accuracy, and saving the model's checkpoints.
+- `src/vis_utils.py`: Provides utility functions for organising directories, saving training histories, and generating plots.
+- `main.py`: Serves as the entry point for the project, managing command-line arguments, initialising the model and data loaders, and orchestrating the training and testing processes.
+- `app.py`: A Flask application for predicting food class labels from input images using the fine-tuned MobileNet model.
+
+### Running `main.py` and `app.py`
+To train the model on a 10% subset of the dataset (e.g. for hyperparameter optimisation or experimentation), you can run:
+```
+python main.py --mode train --dataset subset_10 --num_epochs 50 --learning_rate 1e-4 --model_name my_model
+```
+To train the model on the full dataset, you can run:
+```
+python main.py --mode train --dataset full --num_epochs 50 --learning_rate 1e-4 --model_name my_model
+```
+To evaluate your trained model on the test dataset, run:
+```
+python main.py --mode test --dataset full --checkpoint_path checkpoint/my_model/best_model.pth.tar --model_name my_model
+```
+To deploy your trained model to a web application, you can run:
+```
+python app.py
+```
+
+### Steps to Reproduce
+1. Clone this repository:
+```
+git clone https://github.com/gordon801/mobile-net-food-101.git
+```
+2. Install the required dependencies:
+```
+pip install -r requirements.txt
+```
+3. Train and evaluate your model by following process in the `mobile-net-food-101.ipynb` notebook or by running:
+```
+python main.py --mode train --dataset full --num_epochs 50 --learning_rate 1e-4 --model_name my_model
+python main.py --mode test --dataset full --checkpoint_path checkpoint/my_model/best_model.pth.tar --model_name my_model
+```
+4. Deploy your trained model to a web application and make predictions by uploading new images by running:
+```
+python app.py
+```
+
+## References
+- **Searching for MobileNetV3.** A. Howard, M. Sandler, G. Chu, L.-C. Chen, B. Chen, M. Tan, W. Wang, Y. Zhu, R. Pang, V. Vasudevan, Q.V. Le, H. Adam. In arXiv, 2019. [Paper](https://arxiv.org/abs/1905.02244)
+- **A Data Subset Selection Framework for Efficient Hyper-Parameter Tuning and Automatic Machine Learning.** S. Visalpara, K. Killamsetty, R. Iyer. In SubSetML Workshop 2021, International Conference on Machine Learning, 2021. [Paper](https://krishnatejakillamsetty.me/files/Hyperparam_SubsetML.pdf)
+
+## Acknowledgements
+- [Food-101 Dataset](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/)
+- [CS231N](https://cs231n.stanford.edu/)
+- [Pytorch Flask Tutorial](https://pytorch.org/tutorials/intermediate/flask_rest_api_tutorial.html)
