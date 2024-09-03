@@ -37,7 +37,7 @@ mobile-net-food-101/
 └── ...
 ```
 ### Data
-This model was trained and tested on the FOOD-101 dataset. More information about this dataset can be found on [this website](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/). The dataset can be downloaded from [here](http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz) and should be saved in the `data` folder in the root-level directory. 
+This model was trained and tested on the FOOD-101 dataset, which consists of 101 food categories with 101,000 images. More information about this dataset can be found on [this website](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/). The dataset can be downloaded from [here](http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz) and should be saved in the `data` folder in the root-level directory. 
 
 ### Scripts
 - `src/data_utils.py`: Contains functions to handle data loading, transformations, and preparation of the Food-101 dataset for training, validation, and testing.
