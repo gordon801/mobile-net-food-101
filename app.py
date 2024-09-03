@@ -7,7 +7,7 @@ from src.mobilenet import MyMobileNet
 from src.data_utils import get_test_transform, load_classes
 
 # Set constants
-MODEL_PATH = 'checkpoint/final-model/full-50e-lr1e-4/best_model.pth.tar' # Replace with the file path to your final trained model's checkpoint for deployment
+MODEL_PATH = 'checkpoint/my_model/best_model.pth.tar' # Replace with appropraite checkpoint file path
 CLASS_PATH = 'data/food-101/meta/classes.txt'
 
 app = Flask(__name__)
