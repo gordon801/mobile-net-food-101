@@ -8,7 +8,7 @@ This repository includes a [Notebook](https://github.com/gordon801/mobile-net-fo
 
 ## Architecture
 ![Project Architecture](https://github.com/user-attachments/assets/fdd81f0c-94ce-44be-8890-cbbd9b79da10)
-This project uses MobileNetV3 Large, which we fine-tune on the Food-101 dataset by replacing the final fully-connected layer to output predictions for the 101 food classes. The model is trained using cross-entropy loss and its performance is evaluated using accuracy.
+This project uses a pretrained MobileNetV3Large model with ImageNet weights, which we fine-tune on the Food-101 dataset by replacing the final fully-connected layer to output predictions for the 101 food classes. The model is trained using cross-entropy loss and its performance is evaluated using accuracy.
 
 ## Experimental Model Performance
 ![Validation performance](https://github.com/user-attachments/assets/22a4b296-0c7c-4792-b775-890cd9ab7976)
